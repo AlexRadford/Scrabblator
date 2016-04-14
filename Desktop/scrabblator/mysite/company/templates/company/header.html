@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Scrabblator</title>
+	<meta charset="utf-8" />
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'company/css/bootstrap.min.css' %}" type = "text/css"/>
+	<script type = "text/javascript" src="{% static 'company/js/jquery-1.12.2.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'company/js/bootstrap.min.js' %}"></script>
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		html,
+		body {
+		  height:100%
+		}
+	</style>
+</head>
+
+<body class="body" style="background-color:#5cb85c">  <!--f6f6f6-->
+	<div class="container" style="min-height:95%; ">
+		<div class="row">
+			  <div class="col-sm-2">
+				  <br>
+				  <center>
+					<img src="{% static 'company/img/letter_pile.gif' %}" class="responsive-img" style='max-height:100px;' alt="letters">
+				  </center>
+			  </div>
+			  <div class="col-sm-5 col-md-offset-1">
+				  <br>
+				  <center>
+				  <h1><strong>Scrabblator</strong></h1>
+				  </center>
+			  </div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">
+				<center>
+				<h4>Ridgway Limited</h4>
+				</center>
+			</div>
+			<div class="col-md-3 col-md-offset-7">
+				<form class="navbar-form" role="search">
+				  <div class="input-group">
+					 <input type="text" class="form-control" placeholder="Search for..." name="srch" id="srch">
+					  <div class="input-group-btn">
+						<button class="btn btn-default" type="submit">Go!</button>
+					  </div>
+				   </div><!-- /input-group -->
+				</form><!-- /.col-lg-6 -->
+			</div><!-- /.row -->
+		<br>
+		<br>
+		<hr>
+		<div class="row">
+		  <div class="col-sm-2">
+		   <!-- Great, til you resize. -->
+			<!--<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">-->
+			<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">
+			  <ul class="nav nav-pills">
+				<li><a href='/'>Word Generator</a></li>
+				<li><a href='/calculator/'>Point Calculator</a></li>
+				<li><a href='/contact/'>Contact Us</a></li>
+			  </ul>
+			</div> <!--well bs-sidebar affix-->
+		  </div> <!--col-sm-2-->
+			<div class="col-sm-10">
+				<div class='container'>
+				<h3>Word Generator</h3>
+				</div>
+			</div>
+		  <br>
+		  <br>
+		  <br>
+		  <div class="col-sm-10">
+			<div class='container'>
+			   {% block content %}
+			   {% endblock %}	
+			</div>
+		  </div>
+		  <br>
+		  <br>
+		  <br>
+		  <br>
+	                <!-- START - Added HTML -->
+			<form action="/generated_words/" method="get">
+			<!-- END- Added HTML -->
+			<div class="row">
+			  <div class="col-lg-1">
+				<div class="input-group col-md-offset-6">
+				  <!-- START - Modified HTML -->
+				  <input type="text" class="form-control" maxlength=1 name='T1' value={{value1}}>
+				  <!-- END- Modified HTML -->
+				</div><!-- /input-group -->
+			  </div><!-- /.col-lg-1 -->
+			  <div class="col-lg-1">
+				<div class="input-group col-md-offset-6" method="post">
+				  <!-- START - Modified HTML -->
+				  <input type="text" class="form-control" maxlength=1 name='T2' value={{value2}}>
+				  <!-- END- Modified HTML -->
+				</div><!-- /input-group -->
+			  </div><!-- /.col-lg-1 -->
+			  <div class="col-lg-1">
+				<div class="input-group col-md-offset-6">
+				  <input type="text" class="form-control" maxlength=1 name='T3' value={{value3}}>
+				</div><!-- /input-group -->
+			  </div><!-- /.col-lg-1 -->
+			  <div class="col-lg-1">
+				<div class="input-group col-md-offset-6">
+				  <input type="text" class="form-control" maxlength=1 name='T4' value={{value4}}>
+				</div><!-- /input-group -->
+			  </div><!-- /.col-lg-1 -->
+			  <div class="col-lg-1">
+				<div class="input-group col-md-offset-6">
+				  <input type="text" class="form-control" maxlength=1 name='T5' value={{value5}}>
+				</div><!-- /input-group -->
+			  </div><!-- /.col-lg-1 -->
+			  <div class="col-lg-1">
+				<div class="input-group col-md-offset-6">
+				  <input type="text" class="form-control" maxlength=1 name='T6' value={{value6}}>
+				</div><!-- /input-group -->
+			  </div><!-- /.col-lg-1 -->
+			  <div class="col-lg-1">
+				<div class="input-group col-md-offset-6">
+				  <input type="text" class="form-control" maxlength=1 name='T7' value={{value7}}>
+				</div><!-- /input-group -->
+			  </div><!-- /.col-lg-1 -->
+			  <div class="col-lg-1">
+				<div class="input-group col-md-offset-6">
+				  <input type="text" class="form-control" maxlength=1 name='T8' value={{value8}}>
+				</div><!-- /input-group -->
+			  </div><!-- /.col-lg-1 -->
+			</div><!-- /.row -->
+		  <br>
+	<!-- START - Modified HTML -->
+	<input class="btn btn-danger btn-lg col-md-offset-5" type="submit" value="Generate Word!" onclick="location.href='{% url 'generated_words' %}'">
+	</form>
+	<!-- END - Modified HTML -->
+	<br>
+	<div class="panel panel-default">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">Results List</div>
+
+	  <!-- Table -->
+	  <table class="table">
+		<thead>
+			<tr>
+				<th class="col-md-1">#</th>
+				<th class="col-md-7">Possible Words</th>
+				<th class="col-md-4">Associated Score</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<!-- START - Modified HTML -->
+				<td>{{Word_1}}</td>
+				<!-- END - Modified HTML -->
+				<td>{{Score_1}}</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>{{Word_2}}</td>
+				<td>{{Score_2}}</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>{{Word_3}}</td>
+				<td>{{Score_3}}</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>{{Word_4}}</td>
+				<td>{{Score_4}}</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>{{Word_5}}</td>
+				<td>{{Score_5}}</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>{{Word_6}}</td>
+				<td>{{Score_6}}</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>{{Word_7}}</td>
+				<td>{{Score_7}}</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td>{{Word_8}}</td>
+				<td>{{Score_8}}</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td>{{Word_9}}</td>
+				<td>{{Score_9}}</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td>{{Word_10}}</td>
+				<td>{{Score_10}}</td>
+			</tr>
+		</tbody>
+	  </table>
+	</div>
+	<footer>
+		<div class="container-fluid" style='margin-left:15px'>
+			<p><a href='/contact/' target="blank">Contact Us</a> | <a href="http://linkedin.com" target="blank">LinkedIn</a> | <a href="http://twitter.com" target="blank">Twitter</a> | <a href="http://plus.google.com" target="blank">Google+</a></p>
+		</div>
+	</footer>	
+	
+</body>
+
+</html>
